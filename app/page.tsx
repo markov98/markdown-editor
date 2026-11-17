@@ -1,5 +1,5 @@
-import Tiptap from "./Tiptap";
+import TextEditor from "./TextEditor";
 
 export default function Home() {
-  return <Tiptap />;
+  return <TextEditor />;
 }
