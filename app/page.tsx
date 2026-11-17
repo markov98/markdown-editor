@@ -1,5 +1,5 @@
-import MarkdownEditor from "./MarkdownEditor";
+import Tiptap from "./Tiptap";
 
 export default function Home() {
-  return <MarkdownEditor />;
+  return <Tiptap />;
 }
