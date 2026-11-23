@@ -3,8 +3,7 @@ import type { ReactNode } from "react";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Markdown Editor",
-  description: "A markdown editor.",
+  title: "Next Text Editor"
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
