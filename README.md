@@ -1,4 +1,4 @@
-# Markdown Editor
+# Rich Text Editor
 
 A Next.js application.
 
