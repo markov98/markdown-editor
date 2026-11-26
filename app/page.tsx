@@ -1,12 +1,10 @@
-'use client'
-
-import dynamic from 'next/dynamic'
-
-const TextEditor = dynamic(() => import('./TextEditor'), {
-  ssr: false,
-  loading: () => null,
-})
+import { Suspense } from 'react'
+import TextEditor from './TextEditor'
 
 export default function Home() {
-  return <TextEditor />;
+  return (
+    <Suspense fallback={null}>
+      <TextEditor />
+    </Suspense>
+  )
 }

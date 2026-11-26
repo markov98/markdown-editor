@@ -1,11 +1,31 @@
 'use client'
 
+import type { Editor } from '@tiptap/core'
 import { TaskItem, TaskList } from '@tiptap/extension-list'
-import { EditorContent, useEditor } from '@tiptap/react'
+import { EditorContent, useEditor, useEditorState } from '@tiptap/react'
+import type { EditorStateSnapshot } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import { MenuBar } from './MenuBar'
 
 const extensions = [StarterKit, TaskItem.configure({ nested: true }), TaskList]
+
+function selectWordCount({ editor }: EditorStateSnapshot<Editor>) {
+  const text = editor.getText().trim()
+  return text ? text.split(/\s+/u).length : 0
+}
+
+function WordCount({ editor }: { editor: Editor }) {
+  const wordCount = useEditorState({
+    editor,
+    selector: selectWordCount,
+  })
+
+  return (
+    <p className="mx-auto w-[calc(100%-2rem)] max-w-4xl pb-8 text-right text-sm text-slate-500">
+      {wordCount} {wordCount === 1 ? 'word' : 'words'}
+    </p>
+  )
+}
 
 export default function TextEditor() {
   const editor = useEditor({
@@ -23,6 +43,7 @@ export default function TextEditor() {
     <>
       {editor && <MenuBar editor={editor} />}
       <EditorContent editor={editor} />
+      {editor && <WordCount editor={editor} />}
     </>
   )
 }
